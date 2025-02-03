@@ -1,42 +1,50 @@
-# Getting Started
 
-To get a copy of the code, you can either fork the repository, download it as a ZIP file, or clone it using Git.
 
-## Fork the Repository
 
-1. Go to the repository on GitHub. [https://github.com/krishsub/MultiagentHackathon](https://github.com/krishsub/MultiagentHackathon)
-2. Click the "Fork" button at the top right of the page.
-3. This will create a copy of the repository in your GitHub account.
+# Multi-Agent Workshop
 
-## Download as ZIP
+This project showcases autogen (0.4) by presenting a set of simple scripts that create different type of agents and interactions between them with the purpose of highlighting the main capabilities of the agentic framework. This repo is based on [https://github.com/krishsub/MultiagentHackathon](https://github.com/krishsub/MultiagentHackathon).
 
-1. Go to the repository on GitHub.
-2. Click the "Code" button.
-3. Select "Download ZIP".
-4. Extract the downloaded ZIP file to your desired location.
 
-## Clone with Git
+## Getting Started
 
-1. Open your terminal.
-2. Choose an appropriate top-level directory (e.g. C:\Users\\<you\>\mycode)
-3. Create this top-level directory (`code` in above example) and navigate to it
-from the command line
-4. Run the following command:
+### Prerequisites
 
-    ```sh
-    git clone <repository-url>
-    ```
+- dev container option: The project provides a devcontainer configuration that can be used with github codespaces or your own local dev container. So, if you opt for this, you need to have docker in your system
+- venv option: if you have python > 3.8 you could choose to create a venv and install all the requirements there. 
 
-Replace `<repository-url>` with the URL you copied (either this repo or yours 
-if you forked it).
 
-That's it! You now have a copy of the code.
+### Quickstart
 
-## Important:
-* Right-click the <code>MultiagentHackthon</code> folder and open in VS Code
-* Within VS Code, open the folder in devcontainer when prompted
-* This will take many minutes while the docker image and dependencies are
-downloaded (one time)
-* Once the devcontainer opens, ***don't*** create a Python virtual 
-environment/Conda if prompted, just close that window (we are already in a
-virtual environment with devcontainers)
+#### Environment Variables
+Create a `.env` file with your Azure OpenAI credentials in the `src` folder:
+```bash
+AZURE_OPENAI_API_KEY=your_api_key
+AZURE_OPENAI_ENDPOINT=your_endpoint
+```
+
+#### Installation
+
+Choose one of the following methods to run the different scripts. Make sure to `cd src`. 
+
+#### Option 1: Using uv (Recommended)
+[uv](https://github.com/astral-sh/uv) is a fast Python package installer and runner. If you haven't installed it yet:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Then run the server directly (this will automatically install dependencies):
+```bash
+uv run 0X_SCRIPT_NAME.py
+```
+
+#### Option 2: Using pip
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Start the WebSocket server:
+   ```bash
+   python 0X_SCRIPT_NAME.py
+   ```
