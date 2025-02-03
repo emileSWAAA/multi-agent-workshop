@@ -1,6 +1,4 @@
 
-
-
 # Multi-Agent Workshop
 
 This project showcases autogen (0.4) by presenting a set of simple scripts that create different type of agents and interactions between them with the purpose of highlighting the main capabilities of the agentic framework. This repo is based on [https://github.com/krishsub/MultiagentHackathon](https://github.com/krishsub/MultiagentHackathon).
@@ -33,7 +31,7 @@ Choose one of the following methods to run the different scripts. Make sure to `
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-Then run the server directly (this will automatically install dependencies):
+Then run the script directly (this will automatically install dependencies):
 ```bash
 uv run 0X_SCRIPT_NAME.py
 ```
@@ -44,7 +42,7 @@ uv run 0X_SCRIPT_NAME.py
    pip install -r requirements.txt
    ```
 
-2. Start the WebSocket server:
+2. Run the script:
    ```bash
    python 0X_SCRIPT_NAME.py
    ```
