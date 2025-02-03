@@ -15,6 +15,7 @@ This project showcases autogen (0.4) by presenting a set of simple scripts that 
 ### Quickstart
 
 #### Environment Variables
+For this set of scripts, a gpt-4o model instance was used.
 Create a `.env` file with your Azure OpenAI credentials in the `src` folder:
 ```bash
 AZURE_OPENAI_API_KEY=your_api_key
