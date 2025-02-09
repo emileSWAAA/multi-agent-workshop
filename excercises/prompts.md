@@ -381,9 +381,9 @@ ___
 
 ___
 
-## :question: Exercise 12 - NL to SQL
+## :question: Exercise 12 - hypotenuse
 
-* Exercise: Write a prompt that generates … helps the users with calculating the hypotenuse from a right triangle together with a visualization. The length of the sides must be translated into centimeters. Also give a short explanation of the calculation.
+* Exercise: Write a prompt that helps the users with calculating the hypotenuse from a right triangle together with a visualization. The length of the sides must be translated into centimeters. Also give a short explanation of the calculation.
 
 <details>
   <summary>:white_check_mark: See solution!</summary>
