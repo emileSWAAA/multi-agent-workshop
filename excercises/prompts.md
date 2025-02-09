@@ -401,3 +401,10 @@ The length of the sides must be translated into centimeters. Also give a short e
 </details>
 
 ___
+
+## ⏭️ Next chapter - advanced promt engineering
+
+Please follow the link below to learn more about system messages and how to use safety messages to prevent unwanted reactions from your agent(s)
+[system message design](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/advanced-prompt-engineering)
+
+___
