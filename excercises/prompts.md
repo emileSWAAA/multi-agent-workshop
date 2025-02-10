@@ -3,11 +3,11 @@
 In this document, you find a few exercises for practicing prompt engineering. For each exercise, you'll get some input text and then an expected completion. You task is to write the prompt to achieve the expected completion.
 ___
 
-## :question: Exercise 1 - Kroatian Translation
+## :question: Exercise 1 - Croatian Translation
 
 * Exercise: Write a prompt that generates the expected completion
 * Input text: `I was enjoying the sun, but then a huge cloud came and covered the sky.`
-* Expected completion: `Ich genoss die Sonne, aber dann kam eine riesige Wolke und bedeckte den Himmel.`
+* Expected completion: `Uživao sam u suncu, ali onda je došao ogroman oblak i prekrio nebo.`
 
 <details>
   <summary>:white_check_mark: See solution!</summary>
@@ -17,7 +17,7 @@ ___
     
   Sentence: I was enjoying the sun, but then a huge cloud came and covered the sky.
     
-  Kroatian translation:
+  Croatian translation:
   ```
 
 </details>
