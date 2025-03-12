@@ -7,6 +7,8 @@ This project showcases autogen (0.4) by presenting a set of simple scripts that 
 ## Getting Started
 
 ### Prerequisites
+- Opean AI service deployed with GPT-4o
+- Azure Container Apps Session Pool
 
 - dev container option: The project provides a devcontainer configuration that can be used with github codespaces or your own local dev container. So, if you opt for this, you need to have docker in your system
 - venv option: if you have python > 3.8 you could choose to create a venv and install all the requirements there. 

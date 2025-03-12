@@ -23,6 +23,9 @@ dependencies=[
     "ruff",
     "yfinance",
     "matplotlib",
+    "langchain-azure-dynamic-sessions",
+    "semantic-kernel",
+    "fastapi[standard]",
 ]
 
 [tool.ruff]
