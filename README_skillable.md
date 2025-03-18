@@ -9,8 +9,8 @@ Welcome to the MultiagentHackathon workshop! This project is designed to help yo
 ### Prerequisites
 
 - Python 3.9+ installed
-- An Azure OpenAI API key or OpenAI API key
-- Visual Studio Code or any preferred code editor
+- An Azure OpenAI API key or OpenAI API key (For production ready deployments, you should refrain from using keys, and switch to managed identities)
+- Visual Studio Code
 
 ### Installation
 
@@ -19,7 +19,7 @@ Welcome to the MultiagentHackathon workshop! This project is designed to help yo
    https://github.com/Azure-Samples/multi-agent-workshop
    cd MultiagentHackathon
    ```
-2. Open your code in a devcontainer, using the Dev Containers plugin of VS Code and the devcontainer provided in the repo. Once the plugin is installed, if you open the .devcontainer/devcotainer.json file, it should ask you to re-open your repo in a devcontainer. 
+2. (Optional) Open your code in a devcontainer, using the Dev Containers plugin of VS Code and the devcontainer provided in the repo. Once the plugin is installed, if you open the `.devcontainer/devcotainer.json` file, it should ask you to re-open your repo in a devcontainer. 
 3. Install depedencies:
 
     [uv](https://github.com/astral-sh/uv) is a fast Python package installer and runner. If you haven't installed it yet:
@@ -45,14 +45,16 @@ Welcome to the MultiagentHackathon workshop! This project is designed to help yo
     ```
 
 4. Set up environment variables:
-   - Create a `.env` file in your `exercises` directory
+   - Create a `.env` file in your `exercises` directory.
    - Add your API keys and endpoints (you could get this from the Azure Portal):
      ```
      AZURE_OPENAI_URL=your_azure_endpoint
      AZURE_OPENAI_API_KEY=your_azure_api_key
      ACA_POOL_MANAGEMENT_ENDPOINT=you_ACA_pool_endpoint
      ```
-   - TODO. ADD SCREENSHOTS TO OBTAIN THE CREDENTIALS. 
+   - The following screenshots show you how to get your credentials:
+   ![Azure Portal Credentials](images/get_ai_credentials.jpeg)
+   ![Azure Portal Credentials](images/aca_pool_credentials.jpeg)
 
 ## Repository Structure
 
@@ -97,7 +99,6 @@ Implement a conversation between two agents (Chandler and Joey) who exchange jok
 ### Instructions
 1. Open `exercises/02_two_agents.py`
 2. Complete the TODOs in the file:
-   - Load environment variables using `load_dotenv()`
    - Create a `ChatCompletionClient` using the provided `llm_config`
    - Create two `AssistantAgent` instances with appropriate system messages:
      - Chandler should tell short story jokes related to friends
@@ -107,6 +108,7 @@ Implement a conversation between two agents (Chandler and Joey) who exchange jok
    - Create a `RoundRobinGroupChat` team with both agents
    - Run the conversation and print the results
    - Reset the team and run another conversation as a stream
+3. Documentation is available here: [Autogen Docs](https://microsoft.github.io/autogen/stable/index.html)
 
 ### Expected Outcome
 Two agents exchanging jokes in a structured conversation that terminates after a set number of exchanges.
@@ -127,6 +129,7 @@ Create a number guessing game where two agents interact: one tries to guess a ra
    - Set up a termination condition that ends the game when 'FINISH' is mentioned
    - Create a team with the two agents using `RoundRobinGroupChat`
    - Uncomment the code that runs the team chat to test your implementation
+3. Documentation is available here: [Autogen Docs](https://microsoft.github.io/autogen/stable/index.html)
 
 ### Expected Outcome
 A functional guessing game where agents take turns until the correct number is guessed.
@@ -147,6 +150,7 @@ Build a system with two agents that can write and execute code collaboratively.
    - Create a code writer agent with the system message defined earlier
    - Implement a termination condition for when "FINISH" is mentioned
    - Create a team with round-robin chat including both agents
+3. Documentation is available here: [Autogen Docs](https://microsoft.github.io/autogen/stable/index.html)
 
 ### Expected Outcome
 A system where one agent proposes Python code to calculate the 14th Fibonacci number, and another agent executes it.
@@ -167,6 +171,7 @@ Implement custom agents with code execution capabilities using the AutoGen Core 
    - Implement the message handler for the Executor agent
    - Complete the main function to set up and run the coding agents
    - Call the `coding_agents` function with `asyncio.run()`
+3. Documentation is available here: [Autogen Docs](https://microsoft.github.io/autogen/stable/index.html)
 
 ### Expected Outcome
 A system where an assistant generates code in markdown blocks, and an executor extracts and runs that code.
@@ -187,6 +192,7 @@ Create a human-in-the-loop interaction between an assistant agent and a user pro
    - Create a termination condition that ends when the user says "APPROVE"
    - Create a `RoundRobinGroupChat` team with the assistant and user proxy agents
    - Run the conversation and stream to the console
+3. Documentation is available here: [Autogen Docs](https://microsoft.github.io/autogen/stable/index.html)
 
 ### Expected Outcome
 An interactive session where a human can converse with an AI assistant until they approve the results.
@@ -209,6 +215,7 @@ Implement a function that can be invoked by an agent and configure the agent to 
      - Add the calculator function to the tools list
      - Configure whether the agent should reflect on tool use
    - Process user input and get the assistant's response
+3. Documentation is available here: [Autogen Docs](https://microsoft.github.io/autogen/stable/index.html)
 
 ### Expected Outcome
 An agent that can perform calculations using a custom calculator function when prompted.
@@ -231,6 +238,7 @@ Learn how to execute code in a remote Azure Container Apps environment for secur
    - Initialize the model client and remote executor
    - Register the assistant and executor agents
    - Start the runtime and publish an initial message
+4. Documentation is available here: [Autogen Docs](https://microsoft.github.io/autogen/stable/index.html); [LangChain](https://api.python.langchain.com/en/latest/tools/langchain_azure_dynamic_sessions.tools.sessions.SessionsPythonREPLTool.html)
 
 ### Expected Outcome
 A system that can generate and execute code in a secure, remote container environment.
@@ -256,6 +264,7 @@ Set up a group chat between two agents using Semantic Kernel to solve coding pro
      - Create a chat history with initial system message
      - Add the user question and start the group chat
      - Display messages from each agent
+3. Documentation is available here: [Autogen Docs](https://microsoft.github.io/autogen/stable/index.html); [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/)
 
 ### Expected Outcome
 A group chat where agents collaborate to solve coding problems, with one agent generating code and another executing it.

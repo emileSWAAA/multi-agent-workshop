@@ -2,6 +2,7 @@ import asyncio
 from typing import Annotated, Literal
 
 from autogen_agentchat.agents import AssistantAgent
+from autogen_agentchat.messages import TextMessage
 from autogen_core import CancellationToken
 from autogen_core.models import ChatCompletionClient
 from dotenv import load_dotenv
