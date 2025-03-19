@@ -13,6 +13,22 @@ Welcome to the MultiagentHackathon workshop! This project is designed to help yo
 - Visual Studio Code
 
 ### Infrastructure Setup
+#### Infrastructure as Code
+You can leverage the Azure Developer CLI, `azd` for short, to deploy the prerequisites to a subscription. It'll create the resources and export some env vars which you can use to run the exercises. To leverage `azd` you need to have it installed and configured. After that, all it takes is a simple `azd up` and the components will be installed.
+
+To install azd you can execute the following command in Powershell.
+```Powershell
+powershell -ex AllSigned -c "Invoke-RestMethod 'https://aka.ms/install-azd.ps1' | Invoke-Expression"
+```
+
+If using Linux, you can run:
+```bash
+curl -fsSL https://aka.ms/install-azd.sh | bash
+```
+
+For a detailed explanation on what it deploys, check out the README.md in the infra directory.
+
+After the components have been deployed, you can navigate to AI Foundry and obtain the Open AI Key and Endpoint. The Open AI endpoint, as well as the Azure Container Apps endpoint will be stored in the azd environment variables. You can leverage those as well. The Open AI Key is not exposed in this manner for security considerations.
 #### Azure Portal
 1. Navigate to the Azure Portal from the browser of your skillable lab `https://portal.azure.com/#home`
 2. Login using the Username and Password available in the Resources tab
@@ -266,8 +282,8 @@ An agent that can perform calculations using a custom calculator function when p
 Learn how to execute code in a remote Azure Container Apps environment for secure and isolated execution.
 
 ### Troubleshooting
-This is the first time that you will interact with the ACA Session Pool, thus, it is import to do a bit more setup:
-1. Run the following commands
+This is the first time that you will interact with the ACA Session Pool, thus, you might require to run the following command beforehand:
+
 ```Powershell
 az login 
 ## Select your subscription from the list and continue
