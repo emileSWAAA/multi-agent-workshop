@@ -12,60 +12,28 @@ Welcome to the MultiagentHackathon workshop! This project is designed to help yo
 - An Azure OpenAI API key or OpenAI API key (For production ready deployments, you should refrain from using keys, and switch to managed identities)
 - Visual Studio Code
 
-### Infrastructure Setup
-#### Infrastructure as Code
-You can leverage the Azure Developer CLI, `azd` for short, to deploy the prerequisites to a subscription. It'll create the resources and export some env vars which you can use to run the exercises. To leverage `azd` you need to have it installed and configured. After that, all it takes is a simple `azd up` and the components will be installed.
-
-To install azd you can execute the following command in Powershell.
-```Powershell
-powershell -ex AllSigned -c "Invoke-RestMethod 'https://aka.ms/install-azd.ps1' | Invoke-Expression"
-```
-
-If using Linux, you can run:
-```bash
-curl -fsSL https://aka.ms/install-azd.sh | bash
-```
-
-For a detailed explanation on what it deploys, check out the README.md in the infra directory.
-
-After the components have been deployed, you can navigate to AI Foundry and obtain the Open AI Key and Endpoint. The Open AI endpoint, as well as the Azure Container Apps endpoint will be stored in the azd environment variables. You can leverage those as well. The Open AI Key is not exposed in this manner for security considerations.
-#### Azure Portal
-1. Navigate to the Azure Portal from the browser of your skillable lab `https://portal.azure.com/#home`
-2. Login using the Username and Password available in the Resources tab
-3. Open a new tab in your browser and go to `https://ai.azure.com` (you should be logged in already)
-4. Create a new project, it should setup for you also a hub.
-![Project Creation AI Foundry](images/foundry_project.jpeg)
-5. Deploy a GPT-4o model. You can follow the numbered steps in the screenshot below:
-![Create deployment](images/foundry_create_deployment.jpeg) 
-6. Go back to the Azure Portal, and create a Container App Session Pool. The screenshots below can guide you in the process
-![Search Dynamic Pools](images/search_dynamic_pools.jpeg)
-
-
-![Create Session Pool](images/create_session_pool.jpeg)
-
-
-![Parameters Session Pool](images/parameters_session_pool.jpeg)
-
 ### Installation
 
+1. Open Visual Studio Code (Link in your desktop)
+2. Open a Powershell terminal using the upper menu `Terminal -> New Terminal`
 1. Clone the repository:
-   ```bash
+   ```Powershell
    git clone https://github.com/Azure-Samples/multi-agent-workshop
    cd multi-agent-workshop
    ```
 2. Select open folder in your VS Code and open the `multi-agent-workshop` folder to see the code in your VS Code.
-3. (Optional) Open your code in a devcontainer, using the Dev Containers plugin of VS Code and the devcontainer provided in the repo. Once the plugin is installed, if you open the `.devcontainer/devcotainer.json` file, it should ask you to re-open your repo in a devcontainer. 
-4. Install depedencies:
+3. (**Optional, and takes some time**) Open your code in a devcontainer, using the Dev Containers plugin of VS Code and the devcontainer provided in the repo. Once the plugin is installed, if you open the `.devcontainer/devcotainer.json` file, it should ask you to re-open your repo in a devcontainer. 
+4. Install depedencies (might take some minutes):
 
     [uv](https://github.com/astral-sh/uv) is a fast Python package installer and runner. If you haven't installed it yet:
     
-   ```Powershell
+    ```Powershell
     powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
     $env:Path = "C:\Users\Admin\.local\bin;env:Path"
     uv sync
     ```
 
-    OR (without using uv)
+    **OR (without using uv)**
     ```bash
         python -m venv .venv
     ```
@@ -88,7 +56,65 @@ After the components have been deployed, you can navigate to AI Foundry and obta
         pip install -r requirements.txt
     ```
 
-5. Set up environment variables:
+### Infrastructure Setup
+#### Infrastructure as Code (Option 1 - Preferred)
+You can leverage the Azure Developer CLI, `azd` for short, to deploy the prerequisites to a subscription. It'll create the resources and export some env vars which you can use to run the exercises. To leverage `azd` you need to have it installed and configured. After that, all it takes is a simple `azd up` and the components will be installed.
+
+To install azd you can execute the following command in Powershell.
+```Powershell
+powershell -ex AllSigned -c "Invoke-RestMethod 'https://aka.ms/install-azd.ps1' | Invoke-Expression"
+```
+
+If using Linux, you can run:
+```bash
+curl -fsSL https://aka.ms/install-azd.sh | bash
+```
+
+For a detailed explanation on what it deploys, check out the README.md in the infra directory.
+
+After the components have been deployed, you can navigate to AI Foundry and obtain the Open AI Key and Endpoint. The Open AI endpoint, as well as the Azure Container Apps endpoint will be stored in the azd environment variables. You can leverage those as well. The Open AI Key is not exposed in this manner for security considerations.
+
+**Restart your VS Code** before running the next commands in the root folder of the repo.
+
+```Powershell
+azd auth login
+```
+To login follow the instructions and use the credentials for your Azure Subscription from the `Resources` tab
+
+```Powershell
+azd up  
+```
+
+And follow the instructions in the terminal to name your environment resources, make sure to select the correct subscription. We recommend choosing `Sweden Central` as Location.
+
+#### Azure Portal (Option 2)
+1. Navigate to the Azure Portal from the browser of your skillable lab `https://portal.azure.com/#home`
+2. Login using the Username and Password available in the Resources tab
+3. Open a new tab in your browser and go to `https://ai.azure.com` (you should be logged in already)
+4. Create a new project, it should setup for you also a hub.
+![Project Creation AI Foundry](images/foundry_project.jpeg)
+5. Deploy a GPT-4o model. You can follow the numbered steps in the screenshot below:
+![Create deployment](images/foundry_create_deployment.jpeg) 
+6. Go back to the Azure Portal, and create a Container App Session Pool. The screenshots below can guide you in the process
+![Search Dynamic Pools](images/search_dynamic_pools.jpeg)
+
+
+![Create Session Pool](images/create_session_pool.jpeg)
+
+
+![Parameters Session Pool](images/parameters_session_pool.jpeg)
+
+
+### Configuring your repository
+1. Navigate to the __Azure Portal -> Resource Groups -> YOUR_RESOURCE_GROUP -> openai-YOUR_OWN_SUFFIX -> Explore Azure AI Foundry portal__. Make a note of the endpoint and key, you need then for step 3. 
+
+The following screenshot show you how to get your credentials:
+   ![Azure Portal Credentials](images/get_ai_credentials.jpeg)
+
+2. Navigate to __Azure Portal -> Resource Groups -> YOUR_RESOURCE_GROUP -> aca_pool-YOUR_OWN_SUFFIX__ and get the Pool Management Endpoint.
+   ![Azure Portal Credentials](images/aca_pool_credentials.jpeg)
+
+3. Set up environment variables:
    - Create a `.env` file in your `exercises` directory.
    - Add your API keys and endpoints (you could get this from the Azure Portal, make sure to have the values between quotes):
      ```
@@ -96,9 +122,7 @@ After the components have been deployed, you can navigate to AI Foundry and obta
      AZURE_OPENAI_API_KEY=your_azure_api_key
      ACA_POOL_MANAGEMENT_ENDPOINT=you_ACA_pool_endpoint
      ```
-   - The following screenshots show you how to get your credentials:
-   ![Azure Portal Credentials](images/get_ai_credentials.jpeg)
-   ![Azure Portal Credentials](images/aca_pool_credentials.jpeg)
+   
 
 ## Repository Structure
 
@@ -288,6 +312,8 @@ This is the first time that you will interact with the ACA Session Pool, thus, y
 az login 
 ## Select your subscription from the list and continue
 ```
+
+Also you need to add the `Azure ContainerApps Session Executor` to your ACA Dynamic Pool, use the user that you have in the `Resources` tab.
 ### Instructions
 1. Open `exercises/08_generate_run_code_in_remote_container_on_aca_langchain.py`
 2. Implement the `RemoteExecutor` class:

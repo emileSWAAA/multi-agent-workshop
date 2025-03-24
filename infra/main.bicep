@@ -3,6 +3,9 @@ targetScope = 'subscription'
 @description('Environment name')
 param environmentName string
 
+@description('My principal name')
+param myPrincipalId string
+
 var uniqueSuffix = substring(uniqueString(subscription().id, environmentName), 0, 5)
 var tags = {
   application: 'Multi-Agent Workshop'
@@ -40,6 +43,7 @@ module containerApps 'modules/containerapps.bicep' = {
     tags: tags
     envName: containerAppsEnvName
     poolName: managedPoolName
+    myPrincipalId: myPrincipalId
   }
 }
 

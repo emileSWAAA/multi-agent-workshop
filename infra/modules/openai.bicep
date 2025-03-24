@@ -4,9 +4,19 @@ param tags object
 @description('Name of the Azure OpenAI service')
 param openAiName string
 
+@description('Location for the OpenAI service')
+@allowed([
+  'eastus'
+  'southcentralus'
+  'westeurope'
+  'swedencentral'
+  'westus'
+])
+param location string = 'swedencentral'
+
 resource openAi 'Microsoft.CognitiveServices/accounts@2024-10-01' = {
   name: openAiName
-  location: 'swedencentral'
+  location: location
   tags: tags
   kind: 'OpenAI'
   sku: {
@@ -24,7 +34,7 @@ resource gpt4oDeployment 'Microsoft.CognitiveServices/accounts/deployments@2024-
   name: 'gpt-4o'
   sku: {
     name: 'Standard'
-    capacity: 1
+    capacity: 150
   }
   properties: {
     model: {
