@@ -124,7 +124,94 @@ The following screenshot show you how to get your credentials:
      AZURE_OPENAI_API_KEY=your_azure_api_key
      ACA_POOL_MANAGEMENT_ENDPOINT=you_ACA_pool_endpoint
      ```
-   
+
+## Introduction to Azure AI Agent Service 
+
+Azure AI Agent Service is a fully managed service designed to empower developers to securely build, deploy, and scale high-quality, extensible AI agents without needing to manage the underlying compute and storage resources. This service simplifies the process of creating AI agents that can answer questions, perform actions, or automate workflows by combining generative AI models with tools that allow interaction with real-world data sources. 
+
+Agent service offers several benefits:
+- Ease of Use: What originally took hundreds of lines of code to support client-side function calling can now be done in just a few lines of code.
+- Scalability: As a fully managed service, it allows you to focus on building workflows and agents without worrying about scaling, security, or infrastructure management.
+- Integration: It uses the same wire protocol as Azure OpenAI Assistants, enabling seamless integration with OpenAI SDKs or Azure AI Foundry SDKs.For example, to create an AI Agent with Azure AI Foundry SDK, you can simply define which model the AI uses, the instructions for how it should complete tasks, and the tools it can use to access and interact with other services. 
+
+### Getting started with Azure AI Agent Service in the AI Foundry portal
+
+1. Navigate to the Agents Playground underneath "Build and customize" to select the gpt-4o model created through the portal earlier. 
+
+![Agent Service Start](images/agent_service_1.png)
+
+2. After selecting next you will reveive a confirmation message that your agent is created, and your agent will also automatically be given a unique ID. Select the agent you just created and then click "Try in Playground" to the left.
+
+![Agent Service Start in Playground](images/agent_service_2.png)
+
+3. Once in the playground view add the following description to the instructions for the agent:
+
+```
+You are a helpful assistant that can search files and answer questions based on the file content. You can utilize file search grounded on internal data to efficiently search through proprietary documents and provide accurate answers based on the content. This feature allows you to manage and index uploaded files for efficient keyword and semantic search, enhancing your ability to assist users with their queries.
+            
+You have access to a code interpreter tool that allows you to analyze data, create visualizations, and perform calculations. Be thorough and precise in your answers. For CSV and structured data, provide meaningful insights and summaries when appropriate.
+
+Use the code interpreter when:
+   1. Analyzing numerical data or statistics in CSV or JSON files
+   2. Creating visualizations of data when it would help explain your answer
+   3. Performing calculations or transformations on data
+   4. Extracting specific information from complex structured data
+
+ When using the code interpreter, follow these guidelines:
+   - Write clear, concise code with comments explaining your approach
+   - Use pandas for data analysis, matplotlib/seaborn for visualizations
+   - Use descriptive variable names and follow best practices
+   - Show intermediate steps for complex analyses
+   - Interpret results for the user in plain language after showing code output
+            
+When creating visualizations:
+   - Use clear titles, axis labels, and legends
+   - Choose appropriate chart types for the data
+   - Use matplotlib or seaborn for creating visualizations
+
+```
+
+4. Add a knowledge source for the agent and a code interpreter tool by clicking the + next to Knowledge & Actions. 
+
+- When you upload data for file search in Azure AI Agent Service, a vector store is created to manage and search the uploaded files. This process involves several steps to ensure the data is properly indexed and searchable.
+- First, the uploaded files are automatically parsed and chunked into smaller segments. Each chunk is then embedded, meaning it is converted into a vector representation that captures the semantic meaning of the content. These vectors are stored in a vector database, which supports both keyword and semantic search capabilities
+- Once the vector store is created, it can be attached to both agents and threads, allowing for seamless integration and efficient file management across different AI applications
+- The code interpreter tool enables agents to write and run Python code in a sandboxed environment. This feature is useful for tasks like generating graphs, performing calculations, and analyzing datasets. Agents can iteratively modify and rerun code until execution succeeds.
+
+![Agent Service Add Data & Tool](images/agent_service_3.png)
+
+For the Knowledge Source click Files, and then Select Local Files to add and upload the "Internal Policy Document for Contoso Tech Support Agents.pdf" 
+
+![Agent Service Knowledge Source](images/agent_service_4.png)
+
+For the Actions, select Code Interpreter and then to add a Code Interpeter Action select "Contoso_Tech_Product_Data.csv" from local files and upload it to the Code Interpreter tool 
+
+![Agent Service Code Interpreter](images/agent_service_5.png)
+
+For context on the two files we have just uploade:
+- The pdf file is an Internal Policy Document for Contoso Tech Support Agents, which outlines the policies and procedures that support agents must follow when assisting customers. It covers key guidelines for handling returns, processing warranty claims, shipping options, order tracking, privacy policy, and customer support procedures. 
+- The csv file provided contains sales data for various products sold by Contoso Tech. Each product is listed with its name, category, price, units sold, and the quarter in which the sales occurred. This data provides insights into the sales performance of different products over specific quarters. 
+
+5. Chat with your agent 
+Now you're free to ask your agent questions based on the data provided, here are some sample questions to try out and see how the agent responds. We can also ask for analysis based on the data provided. 
+
+Questions for the policy document:
+```
+What are the key guidelines for handling returns at Contoso Tech?
+
+Which items are non-refundable according to Contoso Tech's policy?
+
+What are the contact details for Contoso Tech's support team?
+```
+
+Prompts for the laptop data:
+```
+Create a bar chart highlighting the top 5 products with the highest units sold.
+
+Generate a pie chart showing the units sold for each product category. Include the number of units per category as well as percentages.
+```
+
+In this section we explored the Azure AI Agent Service, focusing on creating agents and adding tools like file search for searching through proprietary data and the code interpreter for data analysis. These features enable efficient data management, automated workflows, and insightful visualizations. The agent service playground provides a robust environment for experimenting with these tools and enhancing your projects. In the following section we explore how to get started with running and creating agents from a code-first point of view. 
 
 ## Repository Structure
 
