@@ -198,7 +198,7 @@ For the Actions, select Code Interpreter and then to add a Code Interpeter Actio
 
 ![Agent Service Code Interpreter](images/agent_service_5.png)
 
-For context on the two files we have just uploade:
+For context on the two files we have just uploaded:
 - The pdf file is an Internal Policy Document for Contoso Tech Support Agents, which outlines the policies and procedures that support agents must follow when assisting customers. It covers key guidelines for handling returns, processing warranty claims, shipping options, order tracking, privacy policy, and customer support procedures. 
 - The csv file provided contains sales data for various products sold by Contoso Tech. Each product is listed with its name, category, price, units sold, and the quarter in which the sales occurred. This data provides insights into the sales performance of different products over specific quarters. 
 
