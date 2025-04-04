@@ -194,8 +194,7 @@ For the Knowledge Source click Files, and then Select Local Files to add and upl
 
 ![Agent Service Knowledge Source](images/agent_service_4.png)
 
-For the Actions, select Code Interpreter and then to add a Code Interpeter Action select "Contoso_Tech_Product_Data.csv" from local files and upload it to the Code Interpreter tool 
-
+For the Actions, select Code Interpreter and then to add a Code Interpreter Action select "Contoso_Tech_Product_Data.csv" from local files and upload it to the Code Interpreter tool
 ![Agent Service Code Interpreter](images/agent_service_5.png)
 
 For context on the two files we have just uploaded:
