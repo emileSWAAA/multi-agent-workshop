@@ -151,8 +151,7 @@ Agent service offers several benefits:
 
 ![Agent Service Start](images/agent_service_1.png)
 
-2. After selecting next you will reveive a confirmation message that your agent is created, and your agent will also automatically be given a unique ID. Select the agent you just created and then click "Try in Playground" to the left.
-
+2. After selecting next you will receive a confirmation message that your agent is created, and your agent will also automatically be given a unique ID. Select the agent you just created and then click "Try in Playground" to the left.
 ![Agent Service Start in Playground](images/agent_service_2.png)
 
 3. Once in the playground view add the following description to the instructions for the agent:
