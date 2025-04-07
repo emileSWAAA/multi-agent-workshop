@@ -135,6 +135,7 @@ The following screenshot show you how to get your credentials:
      ACA_POOL_MANAGEMENT_ENDPOINT=you_ACA_pool_endpoint
      ```
 
+===
 
 ## Introduction to Azure AI Agent Service 
 
@@ -154,7 +155,7 @@ Agent service offers several benefits:
 2. After selecting next you will receive a confirmation message that your agent is created, and your agent will also automatically be given a unique ID. Select the agent you just created and then click "Try in Playground" to the left.
 ![Agent Service Start in Playground](images/agent_service_2.png)
 
-3. Once in the playground view add the following description to the instructions for the agent:
+3. Once in the playground view add the following description to the instructions for the agent (in the `Instructions` placeholder on the right side of the screen):
 
 ```
 You are a helpful assistant that can search files and answer questions based on the file content. You can utilize file search grounded on internal data to efficiently search through proprietary documents and provide accurate answers based on the content. This feature allows you to manage and index uploaded files for efficient keyword and semantic search, enhancing your ability to assist users with their queries.
@@ -190,11 +191,11 @@ When creating visualizations:
 
 ![Agent Service Add Data & Tool](images/agent_service_3.png)
 
-For the Knowledge Source click Files, and then Select Local Files to add and upload the "Internal Policy Document for Contoso Tech Support Agents.pdf" 
+For the Knowledge Source click Files, and then Select Local Files to add and upload the `multi-agent-workshop/data/Internal Policy Document for Contoso Tech Support Agents.pdf` 
 
 ![Agent Service Knowledge Source](images/agent_service_4.png)
 
-For the Actions, select Code Interpreter and then to add a Code Interpreter Action select "Contoso_Tech_Product_Data.csv" from local files and upload it to the Code Interpreter tool
+For the Actions, select Code Interpreter and then to add a Code Interpreter Action select `multi-agent-workshop/data/Contoso_Tech_Product_Data.csv` from local files and upload it to the Code Interpreter tool
 ![Agent Service Code Interpreter](images/agent_service_5.png)
 
 For context on the two files we have just uploaded:
@@ -431,6 +432,8 @@ Learn how to execute code in a remote Azure Container Apps environment for secur
 
 This is the first time that you will interact with the ACA Session Pool, thus, you might require to run the following command beforehand:
 
+If you do not have Azure CLI installed, do the following: 
+
 Open a Windows Powershell terminal as Administrator and run the command below to install the azure cli:
 
 ```Powershell
@@ -447,7 +450,7 @@ It might be the case that your uv is not on your PATH after killing your current
 ```Powershell
 $env:Path += ";C:\Users\Admin\.local\bin"
 ```
-Also you need to add the `Azure ContainerApps Session Executor` to your ACA Dynamic Pool, use the user that you have in the `Resources` tab.
+If you experiment issues when running the code in the container, due to lack of permissions, you might need to add the `Azure ContainerApps Session Executor` to your user in the ACA Dynamic Pool, use the user that you have in the `Resources` tab.
 
 ![Add Role 1](images/add_role_1.jpeg)
 ![Add Role 2](images/add_role_2.jpeg)
