@@ -135,8 +135,16 @@ The following screenshot show you how to get your credentials:
      ACA_POOL_MANAGEMENT_ENDPOINT=you_ACA_pool_endpoint
      ```
 
-===
+## Repository Structure
 
+- [`src/`](/src/): Contains working examples of each exercise. We recommend you to not copy-paste solutions, but only look at this folder when you are stuck with an exercise and need some inspiration.
+- [`exercises/`](/exercises/): Contains exercise templates for you to complete.
+
+## Getting Started
+
+Start with the first exercise and progress through them sequentially. Each exercise builds upon concepts introduced in the previous ones. Click Next when you are ready to continue.
+
+===
 ## Introduction to Azure AI Agent Service 
 
 Azure AI Agent Service is a fully managed service designed to empower developers to securely build, deploy, and scale high-quality, extensible AI agents without needing to manage the underlying compute and storage resources. This service simplifies the process of creating AI agents that can answer questions, perform actions, or automate workflows by combining generative AI models with tools that allow interaction with real-world data sources. 
@@ -223,18 +231,7 @@ Generate a pie chart showing the units sold for each product category. Include t
 
 In this section we explored the Azure AI Agent Service, focusing on creating agents and adding tools like file search for searching through proprietary data and the code interpreter for data analysis. These features enable efficient data management, automated workflows, and insightful visualizations. The agent service playground provides a robust environment for experimenting with these tools and enhancing your projects. In the following section we explore how to get started with running and creating agents from a code-first point of view. 
 
-
-## Repository Structure
-
-- [`src/`](/src/): Contains working examples of each exercise. We recommend you to not copy-paste solutions, but only look at this folder when you are stuck with an exercise and need some inspiration.
-- [`exercises/`](/exercises/): Contains exercise templates for you to complete.
-
-## Getting Started
-
-Start with the first exercise and progress through them sequentially. Each exercise builds upon concepts introduced in the previous ones. Click Next when you are ready to continue.
-
 ===
-
 ## Exercise 0: Call a model
 
 ### Objective
@@ -430,9 +427,7 @@ Learn how to execute code in a remote Azure Container Apps environment for secur
 
 ### Troubleshooting
 
-This is the first time that you will interact with the ACA Session Pool, thus, you might require to run the following command beforehand:
-
-If you do not have Azure CLI installed, do the following: 
+This is the first time that you will interact with the ACA Session Pool, thus, you might require to run the following commands beforehand (run only if you don't have Azure CLI installed):
 
 Open a Windows Powershell terminal as Administrator and run the command below to install the azure cli:
 
