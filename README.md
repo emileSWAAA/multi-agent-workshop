@@ -1,4 +1,3 @@
-
 # Multi-Agents with Autogen and Semantic Kernel
 
 This project showcases autogen (0.4) by presenting a set of simple scripts that create different type of agents and interactions between them with the purpose of highlighting the main capabilities of the agentic framework. This repo is based on [https://github.com/krishsub/MultiagentHackathon](https://github.com/krishsub/MultiagentHackathon).
@@ -567,6 +566,89 @@ Set up a group chat between two agents using Semantic Kernel to solve coding pro
 ### Expected Outcome
 
 A group chat where agents collaborate to solve coding problems, with one agent generating code and another executing it.
+
+===
+
+## Exercise 10: Restaurant Booking with MCP Plugins
+
+### Objective
+
+Create a restaurant booking system using Semantic Kernel with Model Context Protocol (MCP) plugins integration. Learn how to create and manage specialized plugins for menu handling and restaurant booking.
+
+### Instructions
+
+1. Open [`exercises/10_agent_to_mcp.py`](/exercises/10_agent_to_mcp.py)
+2. Complete the TODOs in the `main` function:
+   - Initialize the Kernel and Chat Service
+   - Set up the Menu Plugin using MCPStdioPlugin
+   - Set up the Booking Plugin using MCPStdioPlugin
+   - Create the Chat Completion Agent with appropriate plugins
+   - Implement the conversation loop
+   - Handle proper cleanup of resources
+3. Documentation is available here: [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/), [MCP Plugins](https://learn.microsoft.com/en-us/semantic-kernel/agents/plugins/model-context-protocol)
+
+### Expected Outcome
+
+An interactive restaurant booking system where users can:
+- Query available restaurants
+- Check menu specials and prices
+- Make restaurant reservations
+- Receive booking confirmations or alternative suggestions
+
+===
+
+## Exercise 11: GitHub Issue Query with MCP Integration
+
+### Objective
+
+Create an agent that can interact with GitHub issues through the Model Context Protocol (MCP) integration, demonstrating how to use Semantic Kernel with external services via MCP plugins.
+
+### Prerequisites
+
+Before starting this exercise, you need to:
+
+1. Install Windows Subsystem for Linux (WSL) if you're on Windows:
+   ```bash
+   wsl --install
+   ```
+
+2. Install Docker:
+   - For Windows: Install Docker Desktop with WSL 2 backend
+   - For Linux: 
+     ```bash
+     sudo apt-get update
+     sudo apt-get install docker-ce docker-ce-cli containerd.io
+     ```
+
+3. Create a GitHub Personal Access Token:
+   - Go to GitHub Settings > Developer settings > Personal access tokens
+   - Generate a new token with `repo` scope
+   - Add the token to your `.env` file as `GITHUB_PERSONAL_ACCESS_TOKEN`
+
+4. Pull the GitHub MCP server image:
+   ```bash
+   docker pull ghcr.io/github/github-mcp-server:latest
+   ```
+
+### Instructions
+
+1. Open [`exercises/11_mcp_gh_client.py`](/exercises/11_mcp_gh_client.py)
+2. Complete the TODOs in the `main` function:
+   - Initialize the Kernel and Chat Service
+   - Set up the GitHub MCP Plugin using MCPStdioPlugin
+   - Configure Docker container settings for the GitHub plugin
+   - Create the Chat Completion Agent with GitHub capabilities
+   - Implement the conversation loop for GitHub queries
+   - Handle proper cleanup of resources and threads
+3. Documentation is available here: [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/), [MCP Plugins](https://learn.microsoft.com/en-us/semantic-kernel/agents/plugins/model-context-protocol), [GitHub API](https://docs.github.com/en/rest)
+
+### Expected Outcome
+
+An agent that can:
+- Query GitHub issues from specified repositories
+- Search for specific types of issues (e.g., Python-related)
+- Check issue status and details
+- Present issue information in a well-formatted manner
 
 ===
 
