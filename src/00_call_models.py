@@ -1,12 +1,9 @@
 import asyncio
 
-from autogen_core.models import ChatCompletionClient
-from autogen_core.models import SystemMessage, UserMessage
-
-
 from dotenv import load_dotenv
+from semantic_kernel.contents.chat_history import ChatHistory
 
-from settings import llm_config
+from settings import chat_completion_service_client
 
 
 async def main():
@@ -31,11 +28,26 @@ async def main():
     #     api_key=os.environ.get("AZURE_OPENAI_API_KEY", ""),
     # )
 
-    client = ChatCompletionClient.load_component(llm_config)
-    
-    result = await client.create([SystemMessage(content="You are a comedian specialized in telling short story jokes."), 
-                                  UserMessage(content="Tell me a joke", source="user")])
-    print(result)
+    history = ChatHistory()
+    user_input = "Tell me a short story joke about a cat and a dog."
+
+    history.add_user_message(user_input)
+    response = await chat_completion_service_client.get_chat_message_content(
+        history
+    )
+    print(f"Assistant: {response}")
+
+    # agent = ChatCompletionAgent(
+    #     service=chat_completion_service_client,
+    #     name="Assistant",
+    #     instructions="You are a comedian specialized in telling short story jokes.",
+    # )
+
+    # user_input = "Tell me a short story joke about a cat and a dog."
+    # print(f"User: {user_input}")
+    # result = await agent.get_response(messages=[user_input])
+
+    # print(result)
 
 
 asyncio.run(main())

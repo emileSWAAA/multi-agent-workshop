@@ -1,10 +1,15 @@
 import os
 
 from dotenv import load_dotenv
+from semantic_kernel.connectors.ai.open_ai import AzureChatCompletion
 
 load_dotenv()
 
-
+chat_completion_service_client = AzureChatCompletion(
+    deployment_name="gpt-4.1-mini",
+    endpoint=os.environ.get("AZURE_OPENAI_URL", ""),
+    api_key=os.environ.get("AZURE_OPENAI_API_KEY", ""),
+)
 
 llm_config = {
     "provider": "AzureOpenAIChatCompletionClient",
@@ -45,10 +50,14 @@ generated_directory = "./generated"
 
 if os.environ.get("AZURE_OPENAI_API_KEY") is None:
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    print("WARNING: Azure OpenAI API key not found. None of the examples will work.")
+    print(
+        "WARNING: Azure OpenAI API key not found. None of the examples will work."
+    )
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 
 if os.environ.get("AZURE_OPENAI_URL") is None:
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    print("WARNING: Azure OpenAI API URL not found. None of the examples will work.")
+    print(
+        "WARNING: Azure OpenAI API URL not found. None of the examples will work."
+    )
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
