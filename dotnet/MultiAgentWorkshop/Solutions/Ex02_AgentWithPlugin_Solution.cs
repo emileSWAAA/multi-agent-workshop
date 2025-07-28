@@ -48,7 +48,7 @@ namespace MultiAgentWorkshop.Solutions
             var message = new ChatMessageContent(AuthorRole.User, input);
             await foreach (ChatMessageContent response in agent.InvokeAsync(message, agentThread))
             {
-                Console.WriteLine($"{response.Content}");
+                response.WriteAgentMessage();
             }
         }
     }
