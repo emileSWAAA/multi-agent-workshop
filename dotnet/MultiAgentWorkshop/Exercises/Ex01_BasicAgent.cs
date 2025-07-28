@@ -13,10 +13,6 @@ namespace MultiAgentWorkshop.Exercises
     /// - Prompt the user for input, send it to the agent, and print the response.
     /// - If the user enters "EXIT", the program should terminate.
     ///
-    /// Setup:
-    /// - Register this exercise runner in Program.cs:
-    ///   services.AddTransient<IExerciseRunner, Ex01_BasicAgent>();
-    /// - Ensure Kernel is registered and available for injection.
     /// </summary>
     public class Ex01_BasicAgent : IExerciseRunner
     {
