@@ -12,7 +12,7 @@ namespace MultiAgentWorkshop.Solutions
     {
         private readonly Kernel _kernel;
 
-        internal Ex03_Orchestration_Solution(Kernel kernel)
+        public Ex03_Orchestration_Solution(Kernel kernel)
         {
             _kernel = kernel;
         }

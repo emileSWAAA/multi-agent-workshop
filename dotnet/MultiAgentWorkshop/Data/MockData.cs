@@ -1,6 +1,4 @@
-﻿using MultiAgentWorkshop.Solutions;
-
-namespace MultiAgentWorkshop.Data
+﻿namespace MultiAgentWorkshop.Data
 {
     public class MockData
     {
@@ -45,9 +43,9 @@ namespace MultiAgentWorkshop.Data
 
         public static List<Order> Orders { get; } = new()
         {
-            new Order("O1001", "P001", "Alice Smith", ShippingMethod.Standard),
-            new Order("O1002", "P003", "Bob Johnson", ShippingMethod.Express),
-            new Order("O1003", "P002", "Charlie Brown", ShippingMethod.SameDay)
+            new Order("S001", "P001", "Alice Smith", ShippingMethod.Standard),
+            new Order("S002", "P003", "Bob Johnson", ShippingMethod.Express),
+            new Order("S003", "P002", "Charlie Brown", ShippingMethod.SameDay)
         };
     }
 

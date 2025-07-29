@@ -15,7 +15,6 @@ namespace MultiAgentWorkshop
             services.AddTransient<Ex04_GroupChat_HumanInTheLoop>();
             services.AddTransient<Ex05_GroupChat_AIManager>();
             services.AddTransient<Ex06_HandOff>();
-            services.AddTransient<Bonus01_Telemetry>();
             services.AddTransient<Bonus02_StructuredOutput>();
 
             // Solutions
@@ -25,7 +24,6 @@ namespace MultiAgentWorkshop
             services.AddTransient<Ex04_GroupChat_HumanInTheLoop_Solution>();
             services.AddTransient<Ex05_GroupChat_AIManager_Solution>();
             services.AddTransient<Ex06_HandOff_Solution>();
-            services.AddTransient<Bonus01_Telemetry_Solution>();
             services.AddTransient<Bonus02_StructuredOutput_Solution>();
 
             return services;
@@ -40,11 +38,10 @@ namespace MultiAgentWorkshop
                     ["1"] = provider.GetRequiredService<Ex01_BasicAgent>(),
                     ["2"] = provider.GetRequiredService<Ex02_AgentWithPlugin>(),
                     ["3"] = provider.GetRequiredService<Ex03_Orchestration>(),
-                    ["6"] = provider.GetRequiredService<Ex04_GroupChat_HumanInTheLoop>(),
-                    ["7"] = provider.GetRequiredService<Ex05_GroupChat_AIManager>(),
-                    ["8"] = provider.GetRequiredService<Ex06_HandOff>(),
-                    ["9"] = provider.GetRequiredService<Bonus01_Telemetry>(),
-                    ["10"] = provider.GetRequiredService<Bonus02_StructuredOutput>(),
+                    ["4"] = provider.GetRequiredService<Ex04_GroupChat_HumanInTheLoop>(),
+                    ["5"] = provider.GetRequiredService<Ex05_GroupChat_AIManager>(),
+                    ["6"] = provider.GetRequiredService<Ex06_HandOff>(),
+                    ["B"] = provider.GetRequiredService<Bonus02_StructuredOutput>(),
                 };
             }
             else
@@ -54,11 +51,10 @@ namespace MultiAgentWorkshop
                     ["1"] = provider.GetRequiredService<Ex01_BasicAgent_Solution>(),
                     ["2"] = provider.GetRequiredService<Ex02_AgentWithPlugin_Solution>(),
                     ["3"] = provider.GetRequiredService<Ex03_Orchestration_Solution>(),
-                    ["6"] = provider.GetRequiredService<Ex04_GroupChat_HumanInTheLoop_Solution>(),
-                    ["7"] = provider.GetRequiredService<Ex05_GroupChat_AIManager_Solution>(),
-                    ["8"] = provider.GetRequiredService<Ex06_HandOff_Solution>(),
-                    ["9"] = provider.GetRequiredService<Bonus01_Telemetry>(),
-                    ["10"] = provider.GetRequiredService<Bonus02_StructuredOutput>(),
+                    ["4"] = provider.GetRequiredService<Ex04_GroupChat_HumanInTheLoop_Solution>(),
+                    ["5"] = provider.GetRequiredService<Ex05_GroupChat_AIManager_Solution>(),
+                    ["6"] = provider.GetRequiredService<Ex06_HandOff_Solution>(),
+                    ["B"] = provider.GetRequiredService<Bonus02_StructuredOutput>(),
                 };
             }
         }

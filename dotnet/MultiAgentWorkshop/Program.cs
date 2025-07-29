@@ -1,12 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MultiAgentWorkshop;
+using MultiAgentWorkshop.Solutions;
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) =>
     {
         services.AddExercises();
         services.AddSemanticKernel(context);
+
+        // Bonus Exercise: Telemetry
+        // Uncomment the line below to enable Application Insights telemetry
+        //services.AddAppInsightsTelemetry(context);
     })
     .Build();
 
@@ -23,8 +28,7 @@ while (true)
     Console.WriteLine("5. Group Chat - AI Manager");
     Console.WriteLine("6. Agent hand-off");
     Console.WriteLine("--------");
-    Console.WriteLine("Bonus 1: Telemetry");
-    Console.WriteLine("Bonus 2: Structured output");
+    Console.WriteLine("Bonus: Structured output");
     Console.WriteLine("Type 'exit' to quit.");
     Console.WriteLine();
 

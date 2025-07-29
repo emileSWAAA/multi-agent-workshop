@@ -5,6 +5,7 @@
       "Microsoft.AspNetCore": "Warning"
     }
   },
+  "ApplicationInsights": "InstrumentationKey=REDACTED;IngestionEndpoint=https://REDACTED;LiveEndpoint=https://REDACTED;ApplicationId=REDACTED",
   "AzureOpenAISettings": {
     "ChatModelDeployment": "",
     "Endpoint": "",
