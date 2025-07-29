@@ -18,7 +18,6 @@ namespace MultiAgentWorkshop.Solutions
         public async Task Run()
         {
             // Create multiple agents with different roles to brainstorm a new app idea.
-
             var productAgent = new ChatCompletionAgent
             {
                 Kernel = _kernel,
@@ -61,7 +60,7 @@ namespace MultiAgentWorkshop.Solutions
             // Create a GroupChatOrchestration object, passing in the agents, a group chat manager (here, a RoundRobinGroupChatManager), and the response callback.
             // The manager controls the flow—here, it alternates turns in a round-robin fashion for a set number of rounds.
             var manager = new RoundRobinGroupChatManager { MaximumInvocationCount = 6 };
-            var brainstormSession = new GroupChatOrchestration(manager, productAgent, marketingAgent, ctoAgent)
+            var orchestration = new GroupChatOrchestration(manager, productAgent, marketingAgent, ctoAgent)
             {
                 ResponseCallback = OnResponse
             };
@@ -76,7 +75,7 @@ namespace MultiAgentWorkshop.Solutions
 
             // Invoke the orchestration with your initial task (e.g., "Let's brainstorm a new health app.").
             // The agents will take turns responding, refining the result.
-            var sessionResult = await brainstormSession.InvokeAsync($"Let's brainstorm a new {topic} app.", runtime);
+            var sessionResult = await orchestration.InvokeAsync($"Let's brainstorm a new {topic} app.", runtime);
             var output = await sessionResult.GetValueAsync(TimeSpan.FromSeconds(30));
 
             // Wait for the orchestration to complete and retrieve the final output.

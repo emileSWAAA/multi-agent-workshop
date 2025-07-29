@@ -12,7 +12,7 @@ namespace MultiAgentWorkshop
             }
 
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write($"{message.AuthorName}: ");
+            Console.Write($"{message.Role} - {message.AuthorName}: ");
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(message.Content);

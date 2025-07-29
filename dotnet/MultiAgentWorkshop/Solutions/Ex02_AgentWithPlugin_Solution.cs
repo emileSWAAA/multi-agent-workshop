@@ -30,7 +30,7 @@ namespace MultiAgentWorkshop.Solutions
                 })
             };
 
-            ChatHistoryAgentThread agentThread = new();
+            var agentThread = new ChatHistoryAgentThread();
             agentThread.ChatHistory.AddSystemMessage("You are a booking agent specialized in helping people with creating or managing bookings. You can check availability of dates using the booking_check_availability function.");
             agentThread.ChatHistory.AddAssistantMessage("You can ask me to check if a date is available for booking. For example, you can say 'Is 2025-10-01 available?'");
 
