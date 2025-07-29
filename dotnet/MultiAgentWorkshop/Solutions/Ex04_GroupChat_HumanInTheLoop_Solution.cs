@@ -1,6 +1,6 @@
 namespace MultiAgentWorkshop.Solutions
 {
-    public class Ex07_GroupChat_AIManager_Solution : IExerciseRunner
+    public class Ex04_GroupChat_HumanInTheLoop_Solution : IExerciseRunner
     {
         public Task Run() => Task.CompletedTask;
     }

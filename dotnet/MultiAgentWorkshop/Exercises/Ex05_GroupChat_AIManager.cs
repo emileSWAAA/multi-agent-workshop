@@ -1,6 +1,6 @@
 ﻿namespace MultiAgentWorkshop.Exercises
 {
-    internal class Ex08_HandOff : IExerciseRunner
+    internal class Ex05_GroupChat_AIManager : IExerciseRunner
     {
         public Task Run()
         {

@@ -18,12 +18,10 @@ while (true)
     Console.WriteLine("Choose an exercise (type the number in front to execute):");
     Console.WriteLine("1. Basic Agent");
     Console.WriteLine("2. Agent with Plugin");
-    Console.WriteLine("3. Group Chat orchestration");
-    Console.WriteLine("4. Concurrent orchestration");
-    Console.WriteLine("5. Sequential orchestration");
-    Console.WriteLine("6. Group Chat - Human in the loop");
-    Console.WriteLine("7. Group Chat - AI Manager");
-    Console.WriteLine("8. Agent hand-off");
+    Console.WriteLine("3. Orchestration");
+    Console.WriteLine("4. Group Chat - Human in the loop");
+    Console.WriteLine("5. Group Chat - AI Manager");
+    Console.WriteLine("6. Agent hand-off");
     Console.WriteLine("--------");
     Console.WriteLine("Bonus 1: Telemetry");
     Console.WriteLine("Bonus 2: Structured output");
@@ -49,6 +47,6 @@ while (true)
     }
     else
     {
-        Console.WriteLine("Invalid option. Please try again.\n");
+        Console.WriteLine("Invalid option. Please try again.");
     }
 }

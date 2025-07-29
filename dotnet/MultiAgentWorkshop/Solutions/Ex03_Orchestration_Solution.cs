@@ -1,16 +1,18 @@
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Agents;
+using Microsoft.SemanticKernel.Agents.Orchestration.Concurrent;
+using Microsoft.SemanticKernel.Agents.Orchestration.GroupChat;
 using Microsoft.SemanticKernel.Agents.Orchestration.Sequential;
 using Microsoft.SemanticKernel.Agents.Runtime.InProcess;
 using Microsoft.SemanticKernel.ChatCompletion;
 
 namespace MultiAgentWorkshop.Solutions
 {
-    public class Ex05_Sequential_Solution : IExerciseRunner
+    internal class Ex03_Orchestration_Solution : IExerciseRunner
     {
         private readonly Kernel _kernel;
 
-        public Ex05_Sequential_Solution(Kernel kernel)
+        internal Ex03_Orchestration_Solution(Kernel kernel)
         {
             _kernel = kernel;
         }
@@ -58,7 +60,23 @@ namespace MultiAgentWorkshop.Solutions
 
             // Create a SequentialOrchestration object, passing in the agents and the response callback.
             // The agents will take turns responding, refining the result.
-            var orchestration = new SequentialOrchestration(productAgent, marketingAgent, ctoAgent)
+            var sequentialOrchestration = new SequentialOrchestration(productAgent, marketingAgent, ctoAgent)
+            {
+                ResponseCallback = responseCallback
+            };
+
+            // Create a ConcurrentOrchestration object, passing in the agents and the response callback.
+            // The ConcurrentOrchestration allows agents to respond in parallel, simulating a more dynamic brainstorming session.
+            var concurrentOrchestration = new ConcurrentOrchestration(productAgent, marketingAgent, ctoAgent)
+            {
+                ResponseCallback = responseCallback
+            };
+
+            // Create a GroupChatOrchestration object, passing in the agents, a group chat manager (here, a RoundRobinGroupChatManager), and the response callback.
+            // The manager controls the flow—here, it alternates turns in a round-robin fashion for a set number of rounds.
+            var groupChatOrchestration = new GroupChatOrchestration(
+                new RoundRobinGroupChatManager { MaximumInvocationCount = 6 },
+                productAgent, marketingAgent, ctoAgent)
             {
                 ResponseCallback = responseCallback
             };
@@ -73,7 +91,9 @@ namespace MultiAgentWorkshop.Solutions
 
             // Invoke the orchestration with your initial task (e.g., "Let's brainstorm a new health app.").
             // The agents will take turns responding, refining the result.
-            var sessionResult = await orchestration.InvokeAsync($"Let's brainstorm a new {topic} app.", runtime);
+            // For this example, we will use the SequentialOrchestration to demonstrate the concept.
+            // You can switch to ConcurrentOrchestration or GroupChatOrchestration to see different behaviors.
+            var sessionResult = await sequentialOrchestration.InvokeAsync($"Let's brainstorm a new {topic} app.", runtime);
             var output = await sessionResult.GetValueAsync(TimeSpan.FromSeconds(30));
 
             // Wait for the orchestration to complete and retrieve the final output.

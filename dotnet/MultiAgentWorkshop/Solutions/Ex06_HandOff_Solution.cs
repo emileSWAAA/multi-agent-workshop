@@ -1,20 +1,17 @@
-using System.ComponentModel;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Agents;
 using Microsoft.SemanticKernel.Agents.Orchestration.Handoff;
 using Microsoft.SemanticKernel.Agents.Runtime.InProcess;
 using Microsoft.SemanticKernel.ChatCompletion;
-using MultiAgentWorkshop.Data;
 using MultiAgentWorkshop.Plugins;
-using static MultiAgentWorkshop.Data.MockData;
 
 namespace MultiAgentWorkshop.Solutions
 {
-    public class Ex08_HandOff_Solution : IExerciseRunner
+    public class Ex06_HandOff_Solution : IExerciseRunner
     {
         private readonly Kernel _kernel;
 
-        public Ex08_HandOff_Solution(Kernel kernel)
+        public Ex06_HandOff_Solution(Kernel kernel)
         {
             _kernel = kernel;
         }
@@ -93,7 +90,10 @@ namespace MultiAgentWorkshop.Solutions
                 return new ChatMessageContent(AuthorRole.User, input);
             }
 
-            // Define handoff relationships
+            // Define handoff relationships between agents.
+            // The SupportAgent can forward requests to the appropriate expert agent based on the topic.
+            // Each expert agent can also hand back control to the SupportAgent if they cannot resolve the issue.
+            // This allows for a flexible support system where the SupportAgent acts as a triage point.
             var handoffs = OrchestrationHandoffs
                 .StartWith(supportAgent)
                 .Add(supportAgent, productAgent, orderAgent, shippingAgent, paymentAgent)
@@ -102,7 +102,8 @@ namespace MultiAgentWorkshop.Solutions
                 .Add(shippingAgent, supportAgent)
                 .Add(paymentAgent, supportAgent);
 
-            // Create orchestration
+            // Create orchestration with the defined handoffs and agents
+            // This orchestration will allow the support agent to triage requests and forward them to the appropriate expert agent.
             var orchestration = new HandoffOrchestration(
                 handoffs,
                 supportAgent,
@@ -123,6 +124,7 @@ namespace MultiAgentWorkshop.Solutions
             var result = await orchestration.InvokeAsync("Hello, I need help with my order and a product.", runtime);
             var output = await result.GetValueAsync(TimeSpan.FromSeconds(120));
 
+            // Print the final response and conversation history
             Console.WriteLine("\n# FINAL RESPONSE:\n");
             Console.WriteLine(output);
             Console.WriteLine("\n# CONVERSATION HISTORY:\n");
@@ -131,6 +133,7 @@ namespace MultiAgentWorkshop.Solutions
                 msg.WriteAgentMessage();
             }
 
+            // Stop the runtime after completion
             await runtime.RunUntilIdleAsync();
         }
     }
