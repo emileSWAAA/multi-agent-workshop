@@ -39,7 +39,7 @@ while (true)
         return 0;
     }
 
-    var actions = ExerciseUtility.GetActions(provider, useSolutions: true);
+    var actions = ExerciseUtility.GetActions(provider, useSolutions: false);
     if (actions.TryGetValue(choice, out var instance) && instance is IExerciseRunner runner)
     {
         Console.WriteLine($"Starting exercise: {runner.GetType().Name}");
